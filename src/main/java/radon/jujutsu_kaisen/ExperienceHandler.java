@@ -248,8 +248,12 @@ public class ExperienceHandler {
                     player.sendSystemMessage(Component.translatable(String.format("chat.%s.experience", JujutsuKaisen.MOD_ID), experience));
                 }
             }
+            Random random = new Random();
+            float minExperience = 0.08f;
+            float maxExperience = 0.1f;
+            float result = minExperience + random.nextFloat() * (maxExperience - minExperience);
 
-            int points = (int) Math.floor(experience * 0.1F);
+            int points = (int) Math.round(experience * result);
 
             if (points > 0) {
                 data.addPoints(points);
